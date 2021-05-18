@@ -28,4 +28,8 @@ Route::get('/test-data-session', function () {
     return $user->id;
 })->middleware(['auth']);
 
+// Lógica para obtener los datos de la sessión actual.
+Route::get('/test-data-session-request', [\App\Http\Controllers\DataSessionController::class, 'index'])
+    ->middleware(['auth']);
+
 require __DIR__ . '/auth.php';
