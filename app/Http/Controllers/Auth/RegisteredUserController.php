@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\PodcastProcessed;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -56,6 +57,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        event(new PodcastProcessed($user));
 
         Auth::login($user);
 
